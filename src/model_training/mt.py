@@ -27,6 +27,10 @@ def create_model_from_layers(model):
     dummy_input = tf.zeros((1, input_layer.shape[1]), dtype=tf.int32)
     model(dummy_input)
 
+    # TODO: d
+    print("Model đã được built !!!!!")
+    # d
+
     return model
 
 
