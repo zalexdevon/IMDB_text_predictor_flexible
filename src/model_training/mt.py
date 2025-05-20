@@ -17,11 +17,23 @@ def create_model_from_layers(model):
     input_layer = model[0]
     x = input_layer
 
+    # TODO: d
+    print("Error here")
+    # d
+
     for layer in model[1:]:
         x = layer(x)
 
+    # TODO: d
+    print("Error here")
+    # d
+
     # Tạo model thôi, chưa cần compile
     model = tf.keras.Model(inputs=input_layer, outputs=x)
+
+    # TODO: d
+    print("Error here")
+    # d
 
     # ✅ Force model to build by passing dummy data
     dummy_input = tf.zeros((1, input_layer.shape[1]), dtype=tf.int32)
