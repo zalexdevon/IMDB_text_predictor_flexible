@@ -2,7 +2,7 @@ import tensorflow as tf
 from Mylib import tf_myclasses, tf_myfuncs, myfuncs
 import os
 import time
-from src.utils import classes, funcs
+from src.utils import classes
 
 
 def load_data(data_transformation_path):
