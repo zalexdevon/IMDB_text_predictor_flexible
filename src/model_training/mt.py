@@ -23,6 +23,10 @@ def create_model_from_layers(model):
     # Tạo model thôi, chưa cần compile
     model = tf.keras.Model(inputs=input_layer, outputs=x)
 
+    # ✅ Force model to build by passing dummy data
+    dummy_input = tf.zeros((1, input_layer.shape[1]), dtype=tf.int32)
+    model(dummy_input)
+
     return model
 
 
