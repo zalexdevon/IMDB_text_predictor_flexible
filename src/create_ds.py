@@ -16,11 +16,15 @@ def create_train_val_ds(param, train_val_path, class_names):
 
     train_feature = myfuncs.load_python_object(train_val_path / "train_feature.pkl")
     train_target = myfuncs.load_python_object(train_val_path / "train_target.pkl")
-    train_target = replace_label_by_number_in_target(train_target, class_names)
+    train_target = replace_label_by_number_in_target(train_target, class_names).astype(
+        "int"
+    )
 
     val_feature = myfuncs.load_python_object(train_val_path / "val_feature.pkl")
     val_target = myfuncs.load_python_object(train_val_path / "val_target.pkl")
-    val_target = replace_label_by_number_in_target(val_target, class_names)
+    val_target = replace_label_by_number_in_target(val_target, class_names).astype(
+        "int"
+    )
 
     train_ds = Dataset.from_tensor_slices((train_feature, train_target))
     train_ds = train_ds.batch(param["batch_size"])
