@@ -1,5 +1,5 @@
 from Mylib import tf_myfuncs, myfuncs
-from tensorflow.data.Dataset import from_tensor_slices
+from tensorflow.data import Dataset
 from tensorflow.keras.layers import TextVectorization
 
 
@@ -20,9 +20,9 @@ def create_train_val_ds(param, train_val_path, class_names):
     val_target = myfuncs.load_python_object(train_val_path / "val_target.pkl")
     val_target = replace_label_by_number_in_target(val_target, class_names)
 
-    train_ds = from_tensor_slices((train_feature, train_target))
+    train_ds = Dataset.from_tensor_slices((train_feature, train_target))
     train_ds = train_ds.batch(param["batch_size"])
-    val_ds = from_tensor_slices((val_feature, val_target))
+    val_ds = Dataset.from_tensor_slices((val_feature, val_target))
     val_ds = val_ds.batch(param["batch_size"])
 
     text_vectorization = TextVectorization(
@@ -60,9 +60,9 @@ def create_train_val_ds_for_sequence_model(param, train_val_path, class_names):
     val_target = myfuncs.load_python_object(train_val_path / "val_target.pkl")
     val_target = replace_label_by_number_in_target(val_target, class_names)
 
-    train_ds = from_tensor_slices((train_feature, train_target))
+    train_ds = Dataset.from_tensor_slices((train_feature, train_target))
     train_ds = train_ds.batch(param["batch_size"])
-    val_ds = from_tensor_slices((val_feature, val_target))
+    val_ds = Dataset.from_tensor_slices((val_feature, val_target))
     val_ds = val_ds.batch(param["batch_size"])
 
     text_vectorization = TextVectorization(
