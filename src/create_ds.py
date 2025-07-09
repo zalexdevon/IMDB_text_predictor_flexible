@@ -12,6 +12,8 @@ def replace_label_by_number_in_target(target, class_names):
 
 
 def create_train_val_ds(param, train_val_path, class_names):
+    print("Tạo ds cho ngram model")
+
     train_feature = myfuncs.load_python_object(train_val_path / "train_feature.pkl")
     train_target = myfuncs.load_python_object(train_val_path / "train_target.pkl")
     train_target = replace_label_by_number_in_target(train_target, class_names)
@@ -52,6 +54,8 @@ def create_train_val_ds(param, train_val_path, class_names):
 
 
 def create_train_val_ds_for_sequence_model(param, train_val_path, class_names):
+    print("Tạo ds cho sequence model")
+
     train_feature = myfuncs.load_python_object(train_val_path / "train_feature.pkl")
     train_target = myfuncs.load_python_object(train_val_path / "train_target.pkl")
     train_target = replace_label_by_number_in_target(train_target, class_names)
