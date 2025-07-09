@@ -282,19 +282,17 @@ class BidirectionalRNNLayerList(layers.Layer):
             for units in self.list_units
         ]
 
-        self.lastBidirectionalRNNLayer = [
-            (
-                BidirectionalRNNLayer(
-                    layer_name=self.layer_name,
-                    units=self.list_units[-1],
-                    return_sequences=False,
-                    recurrent_dropout=self.recurrent_dropout,
-                    merge_mode=self.merge_mode,
-                )
-                if self.do_have_last_layer
-                else PassThroughLayer()
+        self.lastBidirectionalRNNLayer = (
+            BidirectionalRNNLayer(
+                layer_name=self.layer_name,
+                units=self.list_units[-1],
+                return_sequences=False,
+                recurrent_dropout=self.recurrent_dropout,
+                merge_mode=self.merge_mode,
             )
-        ]
+            if self.do_have_last_layer
+            else PassThroughLayer()
+        )
 
         super().build(input_shape)
 
