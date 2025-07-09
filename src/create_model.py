@@ -35,6 +35,8 @@ def create_model_for_rnn(param):
 
 
 def create_model_for_transformer(param):
+    print("create_model_for_transformer")
+
     inputs = layers.Input(shape=(None,), dtype="int64")
     positional_embedding_layer = PositionalEmbedding(
         sequence_length=param["output_sequence_length"],
